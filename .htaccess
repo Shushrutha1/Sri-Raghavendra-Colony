@@ -1,0 +1,14 @@
+RewriteEngine On
+
+# Rewrite random hash-like URLs to index.php
+RewriteRule ^[a-zA-Z0-9]{32}$ index.php [L]
+
+# Prevent direct access to PHP files
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)\.php$ / [R=404,L]
+
+RewriteEngine On
+
+# Redirect hash-based URLs
+RewriteRule ^([a-zA-Z0-9]{32})$ vouchers.php [L]
